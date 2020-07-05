@@ -1,0 +1,23 @@
+{
+  "name": "shoodoo-status",
+  "version": "1.0.0",
+  "description": "Shoodoo Status Page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "date-and-time": "^0.9.0",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-status-monitor": "^1.2.6",
+    "helmet": "^3.20.0",
+    "mdbootstrap": "^4.8.7",
+    "path": "^0.12.7"
+  }
+}

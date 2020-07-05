@@ -1,0 +1,11 @@
+.idea
+_ENV
+logs
+shared-util/node_modules
+shoodoo-server/node_modules
+shoodoo-server/.env
+node_modules
+desktop.ini
+backend.zip
+Dockerfile_api
+

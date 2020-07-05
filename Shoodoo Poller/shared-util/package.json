@@ -1,0 +1,19 @@
+{
+  "name": "shared-util",
+  "version": "1.0.0",
+  "description": "Shared Utility Scripts",
+  "main": "null",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shoodoo",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "extend": "^3.0.2",
+    "fs-extra": "^6.0.1",
+    "request": "^2.88.0",
+    "winston": "^2.4.0"
+  }
+}

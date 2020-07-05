@@ -1,0 +1,61 @@
+{"Shoodoo-Tables-Structure":[
+    {
+		"customer_id":"1010",
+        "solution_id":"1010846931",
+		"run_id": 1,
+		"num_of_files":3,
+		"group_func":"count",
+		"time_granularity":"D",
+		"time_granularity_amount":14,
+		"time_window_lag":"D",
+		"time_window_lag_amount":7,
+		"min_date":null,
+		"max_date":null,
+		"connection":{
+			"type": "s3",
+			"cust_s3-bucket": "shoodoo-hot"
+		},
+        "input_files":[
+			{
+				"shoodoo_name": "SD_timeseries_1",
+				"customer_file_name": [
+										"SHOODOO_WORK_ORDER_20190223_180233.csv"
+									   ],
+				"customer_file_descriptor": "SD_timeseries_1_descriptor.csv"
+			},
+            {
+                "shoodoo_name": "SD_thing_1",
+				"customer_file_name": [
+					"SHOODOO_ACCOUNTS_DETAILS_20190223_182322.csv"
+				],
+				"customer_file_descriptor": "SD_thing_1_descriptor.csv"
+			},
+			{
+				"shoodoo_name": "SD_thing_2",
+				"customer_file_name": [
+										"SHOODOO_EMPLOYEES_DETAILS_20190223_182324.csv"
+										],
+				"customer_file_descriptor": "SD_thing_2_descriptor.csv"
+			}
+        ],
+		"eds_scripts":[
+			{
+				"eds_id": "eds1",
+				"preprocessing": "eds1_pp",
+				"model": "eds1_model"
+			},
+			{
+				"eds_id": "eds2",
+				"preprocessing": "eds2_pp",
+				"model": "eds2_model"
+			}
+
+		],
+		"solution_thresholds": {
+			"score_plain":1.2,
+			"score_good":0.7
+		},
+		"version":1.0
+    }
+  ]
+}

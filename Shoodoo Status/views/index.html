@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="http://localhost:5000/static/img/svg/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Shoodoo Status</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" src="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="http://localhost:5000/static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="http://localhost:5000/static/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="http://localhost:5000/static/css/style.css" rel="stylesheet">
+  <!--jQuery-->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Start your project here-->
+  <!--Main Navigation-->
+<header>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#"><b><b>Shoodoo</b></b></a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="#">Status
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="http://localhost:1337/status">System Information</a>
+          </li>
+      </ul>
+      <!-- Links -->
+  </div>
+  <!-- Collapsible content -->
+
+
+
+</nav>
+<!--/.Navbar-->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main class="mt-5">
+<!--Main container-->
+<div class="container">
+
+  <!--Grid row-->
+  <div class="row">
+
+      <!--Grid column-->
+      <div class="col-md-2 mb-5">
+        <!--Featured image -->
+        <div class="view overlay z-depth-1-half">
+          <img src="http://localhost:5000/static/img/shoodoo.jpg" class="card-img-top" alt="">
+          <div class="mask rgba-white-light"></div>
+        </div>
+      
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-8 mb-5">
+
+        <h2><b>Shoodoo Status</b></h2>
+        <hr>
+        <p>At Shoodoo, transparency is one of our core values. Our mission is to provide you a stable and reliable service, and part of that promise is keeping you fully informed whenever issues arise. 
+
+            Below, you’ll find the current status of Shoodoo, as well as any recent issues or incidents we may have had. If you're experiencing any problems related to Shoodoo and don’t see anything about it below, please contact us as soon as possible.</p>
+      
+      </div>
+  <!--Grid column-->
+
+      </div>
+  <!--Grid row-->
+  <br>
+
+<!--Grid row-->
+<div class="row">
+
+  <!--Grid column-->
+  <div class="col-lg-12 col-md-12 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Card content-->
+      <div class="card-body">
+        <!--Title-->
+        <h4 class="card-title">Shoodoo API</h4>
+         <!--Text-->
+         <p class="card-text">Gives information on the status of all GET request routes in the API server.</p>
+        <div class="progress">
+            <div id = "stat" role="progressbar" aria-valuenow="100"  aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+
+            <script type="text/javascript">
+
+              $(window).on('load', function(){
+
+                $.ajax({
+                url: "http://localhost:1337/api/v2/api-status",
+                method: "GET",
+                headers: {"Content-Type": "application/json", "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzI5LCJlbWFpbCI6ImtldmluLnJvbm9Ac2hvb2Rvby5jb20iLCJ1c2VybmFtZSI6ImtldmluLnJvbm8iLCJzaG9vZG9vIjoxLCJpYXQiOjE1NjQ1NjA4OTV9.hhBreLm_xex_yJuDXZ67G2nyYTrZVi85rbm39p3uRAw"},
+                success: function(result) {
+                  //console.log(result.statuses);
+
+                  if(result.statuses.length === 0) {
+
+                    $("#stat").attr("class", "progress-bar bg-success");
+
+                  } else {
+
+                    $("#stat").attr("class", "progress-bar bg-danger");
+
+                    //$('.card-text').append(result);
+
+                  }
+                }});
+              });
+
+            </script>
+
+        </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-lg-12 col-md-12 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Card image-->
+      <div class="view overlay">
+        <a href="#">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+        <!--Title-->
+        <h4 class="card-title">Shoodoo Website</h4>
+        <!--Text-->
+        <p class="card-text">Gives information on the status of the company's website.</p>
+        <div class="progress">
+
+            <div id="web" role="progressbar" aria-valuenow="100"  aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+
+            <script type="text/javascript">
+
+              $(window).on('load', function(){
+
+                $.ajax({
+                url: "https://shoodoo.com",
+                method: "GET",
+                success: function(result) {
+                  console.log(result);
+
+                  if(typeof result === 'error') {
+
+                    $("#web").attr("class", "progress-bar bg-success");
+
+                  } else {
+
+                    $("#web").attr("class", "progress-bar bg-danger");
+
+                  }
+                }});
+              });
+
+            </script>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-lg-12 col-md-12 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Card content-->
+      <div class="card-body">
+        <!--Title-->
+        <h4 class="card-title">Card title</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="progress">
+          <div role="progressbar" aria-valuenow="100"  aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        </div>
+
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+</div>
+<!--Grid row-->
+
+</div>
+<!--Main container-->
+</main>
+<!--Main layout-->
+
+<!-- Footer -->
+<footer class="page-footer font-small primary-color fixed-bottom">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://shoodoo.com"> shoodoo.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!--Footer-->
+  <!-- Start your project here-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="http://localhost:5000/js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" href="http://localhost:5000/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" href="http://localhost:5000/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript --> 
+  <script type="text/javascript" href="http://localhost:5000/js/mdb.min.js"></script>
+</body>
+
+</html>
